@@ -1,0 +1,33 @@
+=== RESEARCH RESULTS ===
+
+--- PART 1: LAYER-WISE METRICS ---
+
+Persona: Baseline
+  Layers:      Input   | Middle  | Output
+  Bias Gap:   0.0000  | 0.0008  | 0.0001
+  Real Probe: 0.43    | 0.93    | 0.93
+  Control:    0.43    | 0.30    | 0.50
+
+Persona: Neutral
+  Layers:      Input   | Middle  | Output
+  Bias Gap:   0.0000  | 0.0004  | 0.0006
+  Real Probe: 0.43    | 0.93    | 1.00
+  Control:    0.43    | 0.50    | 0.57
+
+Persona: Progressive
+  Layers:      Input   | Middle  | Output
+  Bias Gap:   0.0000  | 0.0005  | -0.0000
+  Real Probe: 0.43    | 0.97    | 1.00
+  Control:    0.43    | 0.60    | 0.63
+
+Persona: Conservative
+  Layers:      Input   | Middle  | Output
+  Bias Gap:   0.0000  | 0.0011  | -0.0001
+  Real Probe: 0.43    | 0.97    | 1.00
+  Control:    0.43    | 0.47    | 0.33
+
+
+--- PART 2: GEOMETRY (L16) ---
+PCA Variance (PC1): 0.1733
+PCA Variance (PC2): 0.0880
+Accuracy after Linear Erasure: 0.9000
