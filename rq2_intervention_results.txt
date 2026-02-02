@@ -1,0 +1,6 @@
+Loading microsoft/Phi-3-mini-4k-instruct...
+
+=== RQ2 RESULTS: INTERVENTION VS PROMPTING ===
+[Baseline] Probe Accuracy: 1.00
+[Soft Alignment (Progressive Prompt)] Probe Accuracy: 1.00
+[Hard Alignment (Linear Erasure)] Probe Accuracy: 0.94

@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from experiment_utils import load_model, get_dataset_embeddings, MALE_NAMES, FEMALE_NAMES
+from experiments_utils import load_model, get_dataset_embeddings, MALE_NAMES, FEMALE_NAMES
 
 LAYER = 16 
 

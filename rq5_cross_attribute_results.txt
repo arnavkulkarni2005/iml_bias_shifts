@@ -1,0 +1,25 @@
+Loading microsoft/Phi-3-mini-4k-instruct...
+
+=== RQ5 RESULTS: CROSS-ATTRIBUTE (RACE) ===
+
+--- Layer: Input (L0) ---
+Persona         | Bias Gap   | Probe Acc 
+---------------------------------------------
+Baseline        | 0.0000     | 0.50
+Progressive     | 0.0000     | 0.50
+
+--- Layer: Middle (L16) ---
+Persona         | Bias Gap   | Probe Acc 
+---------------------------------------------
+Baseline        | 0.0012     | 1.00
+Progressive     | 0.0026     | 1.00
+
+--- Layer: Output (Final) ---
+Persona         | Bias Gap   | Probe Acc 
+---------------------------------------------
+Baseline        | 0.0105     | 1.00
+Progressive     | 0.0073     | 1.00
+
+>> FINAL INSIGHT: The 'Fairness Facade' generalizes across protected attributes.
+>> INSIGHT: While the 'Anti-Racist' prompt halves the visible Bias Gap,
+            the model's internal racial categorization remains 100% intact.

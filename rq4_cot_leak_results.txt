@@ -1,0 +1,8 @@
+Loading microsoft/Phi-3-mini-4k-instruct...
+Extracting Chain-of-Thought (CoT) embeddings...
+
+=== RQ4 RESULTS: CoT LEAKAGE ===
+Reasoning Token Probe Accuracy: 1.00
+>> INSIGHT: High internal gender-awareness during reasoning.
+>> INSIGHT: The model's 'brain' identifies the subject's gender immediately,
+            even before the final neutral answer is formulated.

@@ -1,0 +1,7 @@
+Loading microsoft/Phi-3-mini-4k-instruct...
+Extracting embeddings for Geometry Analysis...
+
+=== RQ1 RESULTS: GEOMETRY ===
+Top 5 PC Variances: [0.16759199 0.08071965 0.06790955 0.04544406 0.03239604]
+Dominance of PC1 (Gender): 16.76%
+Plot saved to rq1_geometry.png
