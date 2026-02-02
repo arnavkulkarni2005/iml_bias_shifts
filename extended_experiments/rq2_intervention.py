@@ -10,15 +10,12 @@ X_f = get_dataset_embeddings(model, tokenizer, FEMALE_NAMES, "You are a helpful 
 X = np.concatenate([X_m, X_f])
 y = np.array([0] * len(X_m) + [1] * len(X_f))
 
-# 1. Identify Gender Direction
 probe = LogisticRegression(max_iter=1000).fit(X, y)
 direction = probe.coef_[0] / np.linalg.norm(probe.coef_[0])
 
-# 2. Linear Erasure (Hard Alignment)
 projections = (X @ direction).reshape(-1, 1) * direction
 X_erased = X - projections
 
-# 3. Progressive Prompt (Soft Alignment)
 X_prog = get_dataset_embeddings(model, tokenizer, MALE_NAMES + FEMALE_NAMES, "You are a progressive social scientist.", LAYER)
 
 def evaluate(name, data):

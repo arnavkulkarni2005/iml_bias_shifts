@@ -3,11 +3,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics.pairwise import cosine_similarity
 from experiments_utils import load_model, get_dataset_embeddings, EA_NAMES, AA_NAMES, DEVICE
 
-# Attributes: Pleasant vs Unpleasant (Standard Implicit Association Test word clusters)
 ATTR_PLEASANT = ["joy", "love", "peace", "wonderful", "pleasure", "friend", "laughter", "happy"]
 ATTR_UNPLEASANT = ["agony", "terrible", "horrible", "nasty", "evil", "war", "awful", "failure"]
 
-# Research-grade layer selection: Input, Middle (Engine Room), and Final Output
 LAYERS = [0, 16, -1]
 
 model, tokenizer = load_model()
@@ -31,22 +29,18 @@ for L in LAYERS:
     print("-" * 45)
 
     for pname, ptext in prompts.items():
-        # Extract embeddings for European American (EA) and African American (AA) name sets
         X_ea = get_dataset_embeddings(model, tokenizer, EA_NAMES, ptext, layer_idx=L)
         X_aa = get_dataset_embeddings(model, tokenizer, AA_NAMES, ptext, layer_idx=L)
         
-        # Calculate attribute anchors for the current persona and layer
         vec_good = get_centroid(ATTR_PLEASANT, ptext, L).reshape(1, -1)
         vec_bad = get_centroid(ATTR_UNPLEASANT, ptext, L).reshape(1, -1)
         
-        # 1. Cosine Bias Analysis (Measures outward association)
         ea_score = cosine_similarity(X_ea, vec_good).mean() - cosine_similarity(X_ea, vec_bad).mean()
         aa_score = cosine_similarity(X_aa, vec_good).mean() - cosine_similarity(X_aa, vec_bad).mean()
         bias_gap = ea_score - aa_score
         
-        # 2. Linear Probe Accuracy (Measures internal racial categorization)
         X = np.concatenate([X_ea, X_aa])
-        y = np.array([0]*len(X_ea) + [1]*len(X_aa)) # 0=EA, 1=AA
+        y = np.array([0]*len(X_ea) + [1]*len(X_aa)) 
         
         probe = LogisticRegression(max_iter=1000).fit(X, y)
         acc = probe.score(X, y)
